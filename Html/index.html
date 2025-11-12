@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img src="/image.png" alt="картинка">
+<pre>
+Строка 1
+    Строка 2 со сдвигом
+</pre>
+<a href="http://google.ru">Ссылка на Google</a>
+<a target="_blank" href="http://google.ru"> Ссылка на Google откроется в новой вкладке
+</a>
+<p id="my-element">Первый параграф</p>
+<a href="#my-element">К первому параграфу</a>
+<ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+</ul>
+<ol>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+</ol>
+<table border="1">
+    <tr>
+        <th>Столбец 1</th>
+        <th>Столбец 2</th>
+    </tr>
+    <tr>
+        <td>Ячейка 1</td>
+        <td>Ячейка 2</td>
+    </tr>
+</table>
+<br>
+<iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200"
+        src="https://www.openstreetmap.org/export/embed.html?bbo x=- 0.004017949104309083%2C51.47612752641776%2C0.0003057 7182769775396%2C51.478569861898606&layer=mapnik"></iframe>
+<br>
+
+<div>
+    <form action="/handler.php" method="post">
+        <!--<label for="client-name">Ваше имя</label>-->
+
+        <label>
+            <select id="os" name="os">
+                <option value="1">Windows</option>
+                <option value="2" selected>Linux</option>
+                <option value="3">macOS</option>
+            </select>
+        </label>
+
+        <!--<label for="client-name">Ваше имя</label>
+        <input type="text" id="client-name" name="clientName" value="Маск">-->
+
+        <label>
+            Ваше имя <input type="text" name="clientName">
+        </label>
+
+        <button type="submit">Отправить заявку</button>
+    </form>
+
+</div>
+
+
+<label><input type="radio" value="1" name="myRadio"> 1</label>
+<label><input checked type="radio" value="2" name="myRadio">2</label>
+<label><input type="radio" value="3" name="myRadio"> 3</label>
+</body>
+</html>
