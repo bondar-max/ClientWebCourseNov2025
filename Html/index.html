@@ -2,71 +2,104 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Главная страница</title>
 </head>
 <body>
-<img src="/image.png" alt="картинка">
+<!-- Заголовки -->
+<h1>Информационная страница</h1>
+<h2>О курсе</h2>
+<h3>Подробности</h3>
+
+<!-- Горизонтальная линия -->
+<hr>
+
+<!-- Ссылки -->
+<p>
+    <a href="form.html">Вернуться к форме обратной связи</a> |
+    <a href="#table">Перейти к таблице</a>
+</p>
+
+<!-- Перевод строки -->
+<br>
+
+<!-- Картинки -->
+<img src="https://www.apple.com/newsroom/images/2025/06/macos-tahoe-26-makes-the-mac-more-capable-productive-and-intelligent-than-ever/article/Apple-WWDC25-macOS-Tahoe-26-hero-250609_big.jpg.large.jpg"
+     alt="Пример изображения 1" width="300" height="150">
+<br>
+<img src="https://www.apple.com/newsroom/images/2025/06/macos-tahoe-26-makes-the-mac-more-capable-productive-and-intelligent-than-ever/article/Apple-WWDC25-macOS-Tahoe-26-lifestyle-01-250609_big.jpg.large.jpg"
+     alt="Пример изображения 2" width="400" height="200">
+
+<!-- Горизонтальная линия -->
+<hr>
+
+<!-- Абзацы -->
+<p>Это первый абзац.</p>
+
+<p>Второй абзац. HTML позволяет создавать структурированные документы с различными типами контента.</p>
+
+<!-- Код -->
 <pre>
-Строка 1
-    Строка 2 со сдвигом
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Пример кода&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Привет, мир!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;
 </pre>
-<a href="http://google.ru">Ссылка на Google</a>
-<a target="_blank" href="http://google.ru"> Ссылка на Google откроется в новой вкладке
-</a>
-<p id="my-element">Первый параграф</p>
-<a href="#my-element">К первому параграфу</a>
-<ul>
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
-</ul>
-<ol>
-    <li>Coffee</li>
-    <li>Tea</li>
-    <li>Milk</li>
-</ol>
-<table border="1">
+
+<!-- Таблица -->
+<h3 id="table">Пример таблицы</h3>
+<table>
     <tr>
-        <th>Столбец 1</th>
-        <th>Столбец 2</th>
+        <th rowspan="2">№</th>
+        <th colspan="2">Информация</th>
     </tr>
     <tr>
-        <td>Ячейка 1</td>
-        <td>Ячейка 2</td>
+        <th>Название</th>
+        <th>Описание</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Задание 1</td>
+        <td>Основы HTML</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Задание 2</td>
+        <td>Основы CSS</td>
+    </tr>
+    <tr>
+        <td colspan="3">Итого: 2 задания</td>
     </tr>
 </table>
+
+<!-- Перевод строки -->
 <br>
-<iframe id="inlineFrameExample" title="Inline Frame Example" width="300" height="200"
-        src="https://www.openstreetmap.org/export/embed.html?bbo x=- 0.004017949104309083%2C51.47612752641776%2C0.0003057 7182769775396%2C51.478569861898606&layer=mapnik"></iframe>
-<br>
 
-<div>
-    <form action="/handler.php" method="post">
-        <!--<label for="client-name">Ваше имя</label>-->
+<!-- Горизонтальная линия -->
+<hr>
 
-        <label>
-            <select id="os" name="os">
-                <option value="1">Windows</option>
-                <option value="2" selected>Linux</option>
-                <option value="3">macOS</option>
-            </select>
-        </label>
+<!-- Дополнительные элементы -->
+<p>Список преимуществ HTML:</p>
+<ul>
+    <li>Стандартизация и кроссплатформенность</li>
+    <li>Семантическая организация информации</li>
+    <li>Простота изучения и использования</li>
+</ul>
 
-        <!--<label for="client-name">Ваше имя</label>
-        <input type="text" id="client-name" name="clientName" value="Маск">-->
+<p>ПСписок преимуществ CSS:</p>
+<ol>
+    <li>Разделение содержания и оформления</li>
+    <li>Гибкость и мощные возможности для дизайна</li>
+    <li>Эффективность и согласованность</li>
+</ol>
 
-        <label>
-            Ваше имя <input type="text" name="clientName">
-        </label>
+<hr>
 
-        <button type="submit">Отправить заявку</button>
-    </form>
+<p>© 2025 Все права защищены</p>
 
-</div>
-
-
-<label><input type="radio" value="1" name="myRadio"> 1</label>
-<label><input checked type="radio" value="2" name="myRadio">2</label>
-<label><input type="radio" value="3" name="myRadio"> 3</label>
 </body>
 </html>
