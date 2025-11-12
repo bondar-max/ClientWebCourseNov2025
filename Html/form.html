@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+</head>
+<body>
+<h1>Форма обратной связи</h1>
+
+<!-- Ссылка на страницу 2 -->
+<p><a href="content.html">Перейти на страницу с контентом</a></p>
+<hr>
+
+<form action="/submit" method="post">
+    <!-- Текстовые поля ввода -->
+    <p>
+        <label>Имя: <input type="text" name="name"></label>
+    </p>
+
+    <p>
+        <label>Email: <input type="email" name="email"></label>
+    </p>
+
+    <!-- Многострочное поле ввода -->
+    <p>
+        <label>Сообщение:<br>
+            <textarea name="message" rows="4" cols="40"></textarea>
+        </label>
+    </p>
+
+    <!-- Чекбоксы -->
+    <p>
+        Увлечения:<br>
+        <label><input type="checkbox" name="hobby" value="sports"> Спорт</label><br>
+        <label><input type="checkbox" name="hobby" value="music"> Музыка</label><br>
+        <label><input type="checkbox" name="hobby" value="reading"> Чтение</label>
+    </p>
+
+    <!-- Радио-баттоны -->
+    <p>
+        Возрастная категория:<br>
+        <label><input type="radio" name="age" value="under18"> До 18 лет</label><br>
+        <label><input type="radio" name="age" value="18-30"> 18-30 лет</label><br>
+        <label><input type="radio" name="age" value="over30"> Старше 30 лет</label>
+    </p>
+
+    <!-- Выпадающий список с единичным выбором -->
+    <p>
+        <label>
+            Город:
+            <select name="city">
+                <option value="">Выберите город</option>
+                <option value="moscow">Москва</option>
+                <option value="spb">Санкт-Петербург</option>
+                <option value="kazan">Казань</option>
+            </select>
+        </label>
+    </p>
+
+    <!-- Выпадающий список с множественным выбором -->
+    <p>
+        <label>
+            Языки (выберите несколько):
+            <select name="languages" multiple size="3">
+                <option value="russian">Русский</option>
+                <option value="english">Английский</option>
+                <option value="german">Немецкий</option>
+                <option value="french">Французский</option>
+            </select>
+        </label>
+    </p>
+
+    <!-- Кнопка -->
+    <button type="submit">Отправить</button>
+</form>
+</body>
+</html>
