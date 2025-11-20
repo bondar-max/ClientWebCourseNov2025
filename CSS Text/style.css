@@ -3,6 +3,7 @@ body {
     background-color: #FEEBCF;
     color: #676565;
     line-height: 1;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
 }
 
 .title {
@@ -12,7 +13,6 @@ body {
 .title pre {
     margin: 0;
     padding: 0;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 26px;
     font-weight: 350;
 }
@@ -20,7 +20,6 @@ body {
 .course-info p {
     margin: 0 0 10px 0;
     padding: 0;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 16px;
     color: #000000;
     font-weight: 300;
@@ -35,6 +34,9 @@ body {
     text-indent: 10px; /* Отступ первой строки */
     margin: 10px 0; /* Отступы между параграфами */
     line-height: 1.5;
-    font-family: Italic, sans-serif;
-    font-weight: 150;
+    font-weight: 300;
+}
+
+.old-price {
+    text-decoration: line-through;
 }
