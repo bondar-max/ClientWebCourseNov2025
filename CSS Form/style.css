@@ -1,0 +1,108 @@
+/* 1. Сброс стилей и box-sizing */
+/* Рекомендация из Лекции 3: "В своих проектах нужно делать так же" [cite: 71] */
+* {
+    box-sizing: border-box; /* [cite: 68] */
+}
+
+body {
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif; /* Стандартный шрифт без засечек */
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    color: #676565;
+}
+
+/* 2. Контейнер */
+/* Ограничиваем ширину и центрируем, чтобы было как на макете */
+.container {
+    max-width: 700px; /* [cite: 174] */
+    margin: 0 auto;   /* Центрирование блока по горизонтали [cite: 97] */
+}
+
+/* 3. Заголовок */
+.page-title {
+    color: #666;
+    font-weight: normal;
+    margin-bottom: 20px;
+    /* h1 - блочный элемент по умолчанию [cite: 122] */
+}
+
+/* 4. Стилизация формы */
+.application-form {
+    background-color: #FFF5E1; /* Светло-бежевый фон, как на картинке */
+    padding: 30px; /* Внутренние отступы от краев формы до контента [cite: 56] */
+    border-radius: 2px; /* Небольшое скругление (упоминается как свойство, не поддерживаемое старыми IE [cite: 346]) */
+}
+
+/* Группировка label и input */
+.form-group {
+    margin-bottom: 20px; /* Отступ снизу между полями [cite: 87] */
+}
+
+/* 5. Стилизация Label (подписей) */
+label {
+    display: block; /* Делаем label блочным, чтобы он был над полем ввода [cite: 120] */
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px; /* Отступ от текста до поля ввода */
+    font-size: 14px;
+}
+
+/* 6. Стилизация полей ввода (input и textarea) */
+/* Используем селектор атрибутов или классов [cite: 320] */
+.form-input {
+    width: 100%; /* Поле занимает всю доступную ширину родителя [cite: 42] */
+    padding: 10px; /* Внутренний отступ текста внутри поля [cite: 56] */
+    border: 1px solid #ddd; /* Светлая граница */
+    font-size: 14px;
+    color: #333;
+    outline: none; /* Убираем стандартную обводку при фокусе, хотя в лекции сказано, что она полезна [cite: 26] */
+}
+
+/* Стилизация placeholder (подсказки)  */
+::placeholder {
+    color: #aaa;
+}
+
+/* Текстовая область */
+textarea.form-input {
+    resize: vertical; /* Разрешаем растягивать только по вертикали */
+    height: 100px;    /* Начальная высота [cite: 166] */
+}
+
+/* 7. Подвал формы (текст и кнопка) */
+.form-footer {
+    margin-top: 20px;
+    /* Используем clearfix hack, так как внутри будет float [cite: 144] */
+}
+
+/* Clearfix через псевдоэлемент ::after  */
+.form-footer::after {
+    content: "";
+    display: block;
+    clear: both; /* [cite: 140] */
+}
+
+.note-text {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+    /* Текст "Заполните и отправьте..." занимает место слева или сверху на мобильных */
+}
+
+/* 8. Кнопка */
+.submit-btn {
+    background-color: #388EAB; /* Сине-зеленый цвет как на макете */
+    color: white; /*  */
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer; /* Курсор в виде руки при наведении  */
+    float: right; /* Прижимаем кнопку вправо  */
+}
+
+/* Эффект при наведении на кнопку (псевдокласс :hover) [cite: 102] */
+.submit-btn:hover {
+    background-color: #2a6e85; /* Немного темнее при наведении */
+}
