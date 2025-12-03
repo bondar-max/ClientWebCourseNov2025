@@ -1,44 +1,42 @@
-/* 1. Сброс стилей и box-sizing */
 * {
-    box-sizing: border-box; /* [cite: 68] */
+    box-sizing: border-box;
 }
 
 body {
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif; /* Стандартный шрифт без засечек */
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     margin: 0;
-    padding: 20px;
+    padding: 0;
     background-color: #fff;
     color: #676565;
 }
 
-/* 2. Контейнер */
-/* Ограничиваем ширину и центрируем, чтобы было как на макете */
 .container {
-    max-width: 700px;
-    margin: 0 auto;   /* Центрирование блока по горизонтали */
+    max-width: 743px;
 }
 
-/* 3. Заголовок */
+/* Заголовок */
 .page-title {
     color: #666;
-    font-weight: normal;
-    margin-bottom: 20px;
-    /* h1 - блочный элемент по умолчанию */
+    font-weight: inherit;
+    margin: 21px 0 5px 15px;
+    font-size: 26px;
 }
 
 /* 4. Стилизация формы */
 .application-form {
-    background-color: #FFF5E1; /* Светло-бежевый фон, как на картинке */
-    padding: 30px; /* Внутренние отступы от краев формы до контента  */
-    border-radius: 2px; /* Небольшое скругление (упоминается как свойство, не поддерживаемое старыми IE ) */
+    background-color: #FEEBCF;
+    padding: 13px; /* Внутренние отступы от краев формы до контента  */
+    border-radius: 2px;
 }
 
 /* Группировка label и input */
 .form-group {
-    margin-bottom: 20px; /* Отступ снизу между полями  */
+    margin-bottom: 14px; /* Отступ снизу между полями  */
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
-/* 5. Стилизация Label (подписей) */
+/* Стилизация Label (подписей) */
 label {
     display: block; /* Делаем label блочным, чтобы он был над полем ввода */
     font-weight: bold;
@@ -47,18 +45,18 @@ label {
     font-size: 14px;
 }
 
-/* 6. Стилизация полей ввода (input и textarea) */
-/* Используем селектор атрибутов или классов [cite: 320] */
+/* Стилизация полей ввода (input и textarea) */
 .form-input {
-    width: 100%; /* Поле занимает всю доступную ширину родителя */
-    padding: 10px; /* Внутренний отступ текста внутри поля */
-    border: 1px solid #ddd; /* Светлая граница */
+    width: 100%;
+    padding: 10px 10px; /* Внутренний отступ текста внутри поля */
+    height: 35px;
+    border: 1px transparent;
     font-size: 14px;
     color: #333;
-    outline: none; /* Убираем стандартную обводку при фокусе, хотя в лекции сказано, что она полезна */
+    outline: none;
 }
 
-/* Стилизация placeholder (подсказки)  */
+/* Стилизация placeholder (подсказки) */
 ::placeholder {
     color: #aaa;
 }
@@ -66,12 +64,12 @@ label {
 /* Текстовая область */
 textarea.form-input {
     resize: vertical; /* Разрешаем растягивать только по вертикали */
-    height: 100px;    /* Начальная высота */
+    height: 114px;
+    margin-bottom: 0;
 }
 
-/* 7. Подвал формы (текст и кнопка) */
 .form-footer {
-    margin-top: 20px;
+    margin-top: 0;
     /* Используем clearfix hack, так как внутри будет float  */
 }
 
@@ -83,25 +81,27 @@ textarea.form-input {
 }
 
 .note-text {
-    font-size: 13px;
+    font-size: 14px;
     color: #666;
-    margin-bottom: 15px;
-    /* Текст "Заполните и отправьте..." занимает место слева или сверху на мобильных */
+    margin-left: 10px;
+    margin-bottom: 11px;
 }
 
 /* 8. Кнопка */
 .submit-btn {
-    background-color: #388EAB; /* Сине-зеленый цвет как на макете */
-    color: white; /*  */
+    background-color: #388EAB;
+    color: white;
     border: none;
-    padding: 10px 20px;
+    height: 30px;
+    width: 150px;
+    margin-right: 10px;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer; /* Курсор в виде руки при наведении  */
     float: right; /* Прижимаем кнопку вправо  */
 }
 
-/* Эффект при наведении на кнопку (псевдокласс :hover) [cite: 102] */
+/* Эффект при наведении на кнопку (псевдокласс :hover)*/
 .submit-btn:hover {
     background-color: #2a6e85; /* Немного темнее при наведении */
 }
