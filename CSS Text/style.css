@@ -1,4 +1,4 @@
-*{
+* {
     box-sizing: border-box;
 }
 
@@ -11,8 +11,8 @@ body {
 .course-info {
     max-width: 710px; /* Ограничение ширины блока */
     padding: 9px 15px; /* Внутренние отступы */
-    background-color: #f2e7d3; /
-border-radius: 5px;
+    background-color: #f2e7d3;
+    border-radius: 5px;
     color: #676565;
     line-height: 1.5; /* Интервал между строками */
     font-size: 16px;
@@ -39,7 +39,7 @@ border-radius: 5px;
     margin-bottom: 5px;
 }
 
-.text{
+.text {
     text-indent: 17px; /* Отступ первой строки */
     font-size: 15px;
 }
