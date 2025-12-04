@@ -22,7 +22,7 @@ body {
     font-size: 26px;
 }
 
-/* 4. Стилизация формы */
+/* Стилизация формы */
 .application-form {
     background-color: #FEEBCF;
     padding: 13px; /* Внутренние отступы от краев формы до контента  */
@@ -31,9 +31,7 @@ body {
 
 /* Группировка label и input */
 .form-group {
-    margin-bottom: 14px; /* Отступ снизу между полями  */
-    margin-right: 10px;
-    margin-left: 10px;
+    margin: 0 10px 14px 10px;
 }
 
 /* Стилизация Label (подписей) */
@@ -70,7 +68,6 @@ textarea.form-input {
 
 .form-footer {
     margin-top: 0;
-    /* Используем clearfix hack, так как внутри будет float  */
 }
 
 /* Clearfix через псевдоэлемент ::after  */
@@ -87,7 +84,7 @@ textarea.form-input {
     margin-bottom: 11px;
 }
 
-/* 8. Кнопка */
+/* Кнопка */
 .submit-btn {
     background-color: #388EAB;
     color: white;
