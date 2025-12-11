@@ -1,0 +1,93 @@
+/* --- styles.css с вертикальными полосами --- */
+
+body {
+    /* Применение стилей к телу, чтобы отцентрировать таблицу */
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    font-size: 20px;
+}
+
+/* --- Стили для таблицы --- */
+.employee-table {
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    border-collapse: separate; /* Изменено с collapse на separate для лучшего контроля */
+    border-spacing: 0;
+}
+
+/* Стили для заголовков (thead) */
+.employee-table thead {
+    background-color: #3498db;
+    color: white;
+}
+
+.employee-table th {
+    padding: 12px 20px 12px 10px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: 2px solid #2980b9; /* Более темная нижняя граница для заголовков */
+}
+
+/* Вертикальные полосы между заголовками */
+.employee-table th:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.3); /* Полупрозрачная белая линия */
+}
+
+/* Стили для тела таблицы (tbody) и ячеек данных (td) */
+.employee-table tbody tr {
+    background-color: #f7f7f7;
+}
+
+.employee-table tbody tr:nth-child(odd) {
+    background-color: #e9e9e9;
+}
+
+.employee-table td {
+    padding: 12px 20px 12px 10px;
+    text-align: left;
+    color: #333;
+    border-top: 1px solid #ddd;
+}
+
+/* Вертикальные полосы между ячейками данных */
+.employee-table td:not(:last-child) {
+    border-right: 1px solid #ddd; /* Серая линия между столбцами */
+}
+
+/* Убираем верхний border в первой строке для более чистого вида */
+.employee-table tbody tr:first-child td {
+    border-top: none;
+}
+
+/* Добавляем закругленные углы для первой и последней ячеек в заголовке */
+.employee-table thead th:first-child {
+    border-top-left-radius: 8px;
+}
+
+.employee-table thead th:last-child {
+    border-top-right-radius: 8px;
+}
+
+/* Добавляем закругленные углы для последней строки */
+.employee-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 8px;
+}
+
+.employee-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 8px;
+}
+
+/* Hover эффект для строк */
+.employee-table tbody tr:hover {
+    background-color: #e3f2fd;
+    cursor: pointer;
+}
