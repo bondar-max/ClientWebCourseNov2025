@@ -1,0 +1,45 @@
+/* --- reset.css --- */
+
+*,
+*::before,
+*::after {
+    /* Наследование box-sizing для упрощения расчета ширины/высоты */
+    box-sizing: border-box;
+}
+
+body {
+    /* Удаление стандартных отступов */
+    margin: 0;
+    /* Установка шрифта по умолчанию */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    line-height: 1.5;
+}
+
+/* Удаление стандартных стилей для списков и ссылок */
+ul, ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Убедиться, что элементы HTML5 Display Block работают корректно */
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+
+/* Сброс стилей таблицы */
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Сброс стилей для изображений */
+img {
+    max-width: 100%;
+    display: block;
+}
