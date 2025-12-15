@@ -24,10 +24,18 @@ const array2 = [4, 5];
 const array3 = array1.concat(array2);
 console.log(array3);*/
 
-const array = [1, 2, 3, 4, 5];
+/*const array = [1, 2, 3, 4, 5];
 const array1 = array.slice(1, 4);
 // [2, 3] – подмассив от начального индекса до конечного
 const array2 = array.slice(3);
 // [4, 5] – подмассив от индекса до конца массива
 console.log(array1);
 console.log(array2  );
+*/
+
+const array = [3, 1, 2, 6, 5];
+array.sort(function(e1, e2)
+{
+    return e2 - e1;
+});
+console.log(array);
