@@ -1,54 +1,58 @@
-/*const x = 3;
-const array = [1, 2, 3, 4, 5];
-console.log(array);
-array.push(6); // добавление в конец массива
-array.push(7, 8); // можно вставлять сколько угодно за раз
-console.log(array);
-array.pop();
-console.log(array);*/
+(function() {
+    "use strict";
 
-/*const array = [1, 2, 3, 4, 5];
-array.unshift(0); // добавление в начало массива
-console.log(array);
-array.unshift(-2, -1); // можно вставлять много элем-в за раз
-console.log(array);
-array.shift();
-console.log(array);*/
+    // Пространство имен для задач
+    window.ArrayTasks = window.ArrayTasks || {};
 
-/*const array = [1, 2, 3, 4, 5];
-array.reverse();
-console.log(array.join(", "));*/
+    // 1. Работа с массивом чисел
+    ArrayTasks.processArray = function() {
+        const array = [34, 12, 56, 78, 23, 9, 45, 67, 89, 1, 33, 77, 92, 44];
 
-/*const array1 = [1, 2, 3];
-const array2 = [4, 5];
-const array3 = array1.concat(array2);
-console.log(array3);*/
+        // Сортировка по убыванию
+        const sortedArray = [...array].sort((a, b) => b - a);
 
-/*const array = [1, 2, 3, 4, 5];
-const array1 = array.slice(1, 4);
-// [2, 3] – подмассив от начального индекса до конечного
-const array2 = array.slice(3);
-// [4, 5] – подмассив от индекса до конца массива
-console.log(array1);
-console.log(array2  );
-*/
+        // Первые 5 элементов
+        const firstFiveElements = sortedArray.slice(0, 5);
 
-const array = [3, 1, 17, 2, 9, 6, 13, 5, 4];
+        // Последние 5 элементов исходного массива
+        const lastFiveElements = array.slice(-5);
 
-array.sort(function(e1, e2)
-{
-    return e2 - e1;
-});
-console.log(array);
+        // Сумма четных чисел
+        const evenNumbersSum = array.reduce((sum, num) =>
+            num % 2 === 0 ? sum + num : sum, 0);
 
-const array2 = array.slice(4);
-console.log(array2);
+        console.log("Исходный массив:", array);
+        console.log("Отсортированный по убыванию:", sortedArray);
+        console.log("Первые 5 элементов:", firstFiveElements);
+        console.log("Последние 5 элементов:", lastFiveElements);
+        console.log("Сумма четных чисел:", evenNumbersSum);
+    };
 
-const array3 = array.slice(0, 5);
-console.log(array3);
+    // 2. Массив чисел от 1 до 100 и их квадраты
+    ArrayTasks.processOneToHundredArray = function() {
+        // Создаем массив от 1 до 100
+        const array = Array.from({length: 100}, (_, i) => i + 1);
 
-const filteredArray = array.filter(e => e % 2 === 0);
-console.log(filteredArray);
+        // Квадраты четных чисел
+        const evenNumbersSquares = array
+            .filter(num => num % 2 === 0)
+            .map(num => num * num);
 
-const sum2 = filteredArray.reduce((a, b) => a + b);
-console.log(sum2);
+        console.log("Массив от 1 до 100:", array);
+        console.log("Квадраты четных чисел:", evenNumbersSquares);
+        console.log("Количество четных чисел:", evenNumbersSquares.length);
+    };
+
+    // Запуск всех задач
+    ArrayTasks.runAll = function() {
+        console.log("=== Задача 1: Работа с массивом чисел ===");
+        ArrayTasks.processArray();
+
+        console.log("\n=== Задача 2: Массив 1-100 и квадраты четных ===");
+        ArrayTasks.processOneToHundredArray();
+    };
+
+})();
+
+// Запуск задач
+ArrayTasks.runAll();
