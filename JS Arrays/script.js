@@ -33,9 +33,22 @@ console.log(array1);
 console.log(array2  );
 */
 
-const array = [3, 1, 2, 6, 5];
+const array = [3, 1, 17, 2, 9, 6, 13, 5, 4];
+
 array.sort(function(e1, e2)
 {
     return e2 - e1;
 });
 console.log(array);
+
+const array2 = array.slice(4);
+console.log(array2);
+
+const array3 = array.slice(0, 5);
+console.log(array3);
+
+const filteredArray = array.filter(e => e % 2 === 0);
+console.log(filteredArray);
+
+const sum2 = filteredArray.reduce((a, b) => a + b);
+console.log(sum2);
