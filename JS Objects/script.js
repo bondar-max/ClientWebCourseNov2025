@@ -58,3 +58,33 @@ const countries = [
     }
 ];
 
+"use strict";
+
+const CountryApp = (function() {
+    // Тут будут данные и функции
+
+    const findCountriesWithMaxCities = () => {
+        const cityCounts = countries.map(country => country.cities.length);
+        const maxCount = Math.max(...cityCounts);
+        return countries.filter(country => country.cities.length === maxCount);
+    }
+
+    const getCountriesTotalPopulation = () => {
+        return countries.reduce((result, country) => {
+            // твой код здесь
+            const totalPopulation = country.reduce(country.cities.population,)
+        }, {});
+    }
+
+    return {
+        // Тут будут публичные методы
+        //findCountriesWithMaxCities
+        getCountriesTotalPopulation
+    };
+})();
+
+// Основная логика
+(function() {
+
+    console.log(CountryApp.findCountriesWithMaxCities())// Тут будем вызывать методы и выводить результаты
+})();
