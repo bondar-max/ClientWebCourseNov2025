@@ -5,57 +5,59 @@
 body {
     font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
     background-color: #f7f3e8;
-    padding: 5px;
 }
 
 .course-info {
-    max-width: 710px; /* Ограничение ширины блока */
-    padding: 9px 15px; /* Внутренние отступы */
+    max-width: 750px;
+    padding: 9px 15px;
     background-color: #f2e7d3;
     border-radius: 5px;
     color: #676565;
-    line-height: 1.5; /* Интервал между строками */
+    line-height: 1.5;
     font-size: 16px;
+    margin: 0; /* вместо padding у body */
 }
 
-.course-info h1 {
+.course-title {
     font-size: 26px;
     font-weight: normal;
     margin-bottom: 10px;
-    line-height: 1.2
+    line-height: 1.2;
 }
 
-.course-info h2 {
+.section-title {
     font-size: 16px;
     font-weight: bold;
-    color: #37819F;
+    color: #37819f;
     margin-top: 5px;
     margin-bottom: 8px;
 }
 
-/* Стиль для параграфов */
-.course-info p {
+.course-detail {
     font-weight: 300;
     margin-bottom: 5px;
 }
 
 .text {
-    text-indent: 17px; /* Отступ первой строки */
-    font-size: 15px;
+    text-indent: 16px;
+    font-size: 95%;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 1.4;
+    text-align: justify;
 }
 
-/* Стиль для перечеркнутой старой цены */
+.text:last-child {
+    margin-bottom: 0;
+}
+
 .old-price {
     text-decoration: line-through;
     color: #676565;
     margin-right: 5px;
 }
 
-/* Стиль для жирного текста (strong) */
-.course-info strong {
+.strong-text {
     font-weight: bold;
-}
-
-strong {
-    color: #37819F;
+    color: #37819f;
 }
