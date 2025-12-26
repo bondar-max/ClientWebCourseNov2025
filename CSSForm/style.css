@@ -19,14 +19,14 @@ body {
 .page-title {
     color: #666666;
     font-weight: inherit;
-    margin: 21px 21px 5px;
-    font-size: 26px;
+    margin: 23px 21px 7px;
+    font-size: 28px;
 }
 
 /* Форма */
 .application-form {
     background-color: #feebcf;
-    padding: 13px 13px ;
+    padding: 13px 22px;
     border-radius: 2px;
 }
 
@@ -40,12 +40,16 @@ body {
     margin-bottom: 18px;
 }
 
+.application-form > .form-group:nth-child(4) {
+    margin-bottom: 16px;
+}
+
 /* Label */
 .form-label {
     display: block;
     font-weight: bold;
     color: #555555;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
     font-size: 14px;
 }
 
@@ -53,9 +57,9 @@ body {
 .form-input {
     width: 100%;
     padding: 10px;
-    height: 35px;
+    height: 34px;
     border: none;
-    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
     color: #333333;
     outline: none;
@@ -69,8 +73,9 @@ body {
 /* Textarea */
 textarea.form-input {
     resize: vertical;
-    height: 114px;
+    height: 112px;
     font-family: inherit;
+    padding: 8px 10px;
 }
 
 /* Футер формы */
@@ -97,12 +102,13 @@ textarea.form-input {
     background-color: #388eab;
     color: #ffffff;
     border: none;
-    padding: 8px 20px;
+    padding: 8px 10px;
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
     float: right;
     border-radius: 2px;
+    width: 151px;
 }
 
 .submit-button:hover {
