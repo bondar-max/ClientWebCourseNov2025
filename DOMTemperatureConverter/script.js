@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", function () {
     kelvinOutputElement.readOnly = true;
     fahrenheitOutputElement.readOnly = true;
 
-    const convertBtn = document.querySelector('.convert-button');
-    convertBtn.addEventListener("click", function (e) {
+    const convertButton = document.querySelector('.convert-button');
+
+    convertButton.addEventListener("click", function () {
         const celsiusValue = parseFloat(celsiusInputElement.value);
 
         if (isNaN(celsiusValue)) {
