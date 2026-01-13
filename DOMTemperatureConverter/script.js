@@ -1,3 +1,5 @@
+"use strict";
+
 document.addEventListener("DOMContentLoaded", function () {
     const celsiusInputElement = document.getElementById('celsius-scale');
 
