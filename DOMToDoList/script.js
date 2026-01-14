@@ -1,60 +1,101 @@
+// Ожидаем полной загрузки DOM перед выполнением скрипта
 document.addEventListener("DOMContentLoaded", function () {
+    // Получаем ссылки на основные элементы
     const todoList = document.getElementById("todo-list");
     const newTodoItemTextField = document.getElementById("new-todo-item-text-field");
 
-    const newTodoForm = document.getElementById("new-todo-item-form");
-    newTodoForm.addEventListener("submit", function (e) {
-        e.preventDefault();
+    // Получаем форму добавления новой заметки
+    const newTodoForm = document.querySelector(".new-todo-item-form");
 
+    // Добавляем обработчик события отправки формы
+    newTodoForm.addEventListener("submit", function (e) {
+        e.preventDefault(); // Предотвращаем стандартную отправку формы
+
+        // Убираем класс ошибки при новой попытке добавления
         newTodoItemTextField.classList.remove("invalid");
 
-        const newTodoItemText = newTodoItemTextField.value.trim();
+        // Получаем и очищаем текст заметки от пробелов
+        let newTodoItemText = newTodoItemTextField.value.trim();
 
+        // Проверяем, не пустой ли текст
         if (newTodoItemText.length === 0) {
-            newTodoItemTextField.classList.add("invalid");
-            return;
+            newTodoItemTextField.classList.add("invalid"); // Показываем ошибку
+            return; // Прерываем выполнение
         }
 
+        // Создаем новый элемент списка (заметку)
         const newTodoItem = document.createElement("li");
 
+        // Функция для установки режима просмотра (обычный вид заметки)
         function setViewMode() {
-            newTodoItem.innerHTML = `<span class="text"></span>  
+            // Устанавливаем HTML структуру заметки в режиме просмотра
+            newTodoItem.innerHTML = `<span class="text"></span>
+        <div class="button-group">
             <button type="button" class="edit-button">Редактировать</button>
-            <button type="button" class="delete-button">Удалить</button>`;
+            <button type="button" class="delete-button">Удалить</button>
+        </div>`;
 
+            // Вставляем текст заметки
             newTodoItem.querySelector(".text").textContent = newTodoItemText;
 
+            // Добавляем обработчик для кнопки удаления
             newTodoItem.querySelector(".delete-button").addEventListener("click", function () {
-                newTodoItem.remove();
+                newTodoItem.remove(); // Удаляем заметку из DOM
             });
 
+            // Добавляем обработчик для кнопки редактирования
             newTodoItem.querySelector(".edit-button").addEventListener("click", function () {
+                // Переключаемся в режим редактирования
                 newTodoItem.innerHTML = `
             <form class="edit-form">
                 <input type="text" class="edit-todo-item-text-field">
-                <button type="button">Сохранить</button>
+                <button type="submit">Сохранить</button>
                 <button type="button" class="cancel-button">Отмена</button>
             </form>   
             `;
 
-                newTodoItem.querySelector(".edit-todo-item-text-field").value = newTodoItemText;
+                // Получаем поле ввода для редактирования
+                const editToDoItemTextField = newTodoItem.querySelector(".edit-todo-item-text-field");
 
+                // Устанавливаем текущий текст в поле редактирования
+                editToDoItemTextField.value = newTodoItemText;
+
+                // Обработчик для кнопки "Отмена"
                 newTodoItem.querySelector(".cancel-button").addEventListener("click", function () {
-                    setViewMode();
+                    setViewMode(); // Возвращаемся в режим просмотра
                 });
 
-                newTodoItem.querySelector(".edit-form").addEventListener("submit", function () {
-                    e.preventDefault();
+                // Обработчик отправки формы редактирования
+                newTodoItem.querySelector(".edit-form").addEventListener("submit", function (e) {
+                    e.preventDefault(); // Предотвращаем отправку формы
 
+                    // Получаем и очищаем отредактированный текст
+                    const editTodoItemText = editToDoItemTextField.value.trim();
+
+                    // Проверяем, не пустой ли текст
+                    if (editTodoItemText.length === 0) {
+                        editToDoItemTextField.classList.add("invalid");
+                        editToDoItemTextField.value = ""; // Очищаем поле
+                        editToDoItemTextField.placeholder = "Нельзя сохранять пустое поле!";
+                        return; // Если пустой - ничего не делаем
+                    }
+
+                    // Обновляем текст заметки
+                    newTodoItemText = editTodoItemText;
+
+                    // Возвращаемся в режим просмотра
                     setViewMode();
                 });
             });
         }
 
+        // Устанавливаем начальный режим просмотра для новой заметки
         setViewMode();
+
+        // Добавляем новую заметку в список
         todoList.appendChild(newTodoItem);
 
+        // Очищаем поле ввода после успешного добавления
         newTodoItemTextField.value = "";
-
-    })
-})
+    });
+});
