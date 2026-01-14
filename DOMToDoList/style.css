@@ -1,0 +1,21 @@
+.new-todo-item-label{
+    display: block;
+}
+
+.input-wrapper{
+    display: inline-block;
+    vertical-align: top;
+}
+
+.error-message{
+    display: none;
+    color: #f00;
+}
+
+.invalid{
+    border-color: #f00;
+}
+
+.invalid ~ .error-message{
+    display: block;
+}
