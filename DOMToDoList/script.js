@@ -1,3 +1,5 @@
+"use strict";
+
 // Ожидаем полной загрузки DOM перед выполнением скрипта
 document.addEventListener("DOMContentLoaded", function () {
     // Получаем ссылки на основные элементы
@@ -20,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Проверяем, не пустой ли текст
         if (newTodoItemText.length === 0) {
             newTodoItemTextField.classList.add("invalid"); // Показываем ошибку
-            return; // Прерываем выполнение
+            return;
         }
 
         // Создаем новый элемент списка (заметку)
@@ -40,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Добавляем обработчик для кнопки удаления
             newTodoItem.querySelector(".delete-button").addEventListener("click", function () {
-                newTodoItem.remove(); // Удаляем заметку из DOM
+                newTodoItem.remove(); // Удаляем заметку
             });
 
             // Добавляем обработчик для кнопки редактирования
@@ -67,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Обработчик отправки формы редактирования
                 newTodoItem.querySelector(".edit-form").addEventListener("submit", function (e) {
-                    e.preventDefault(); // Предотвращаем отправку формы
+                    e.preventDefault();
 
                     // Получаем и очищаем отредактированный текст
                     const editTodoItemText = editToDoItemTextField.value.trim();
@@ -75,9 +77,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Проверяем, не пустой ли текст
                     if (editTodoItemText.length === 0) {
                         editToDoItemTextField.classList.add("invalid");
-                        editToDoItemTextField.value = ""; // Очищаем поле
+                        editToDoItemTextField.value = "";
                         editToDoItemTextField.placeholder = "Нельзя сохранять пустое поле!";
-                        return; // Если пустой - ничего не делаем
+                        return;
                     }
 
                     // Обновляем текст заметки
