@@ -1,9 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
 .container {
     max-width: 500px;
     margin: 0 auto;
-    background: white;
+    background: #fff;
     padding: 20px;
-    border-radius: 8px;
 }
 
 h1 {
@@ -15,7 +18,7 @@ h1 {
 .new-todo-item-label {
     display: block;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 18px;
     color: #555;
 }
 
@@ -28,7 +31,6 @@ h1 {
     padding: 10px;
     border: 2px solid #ddd;
     border-radius: 6px;
-    box-sizing: border-box;
     font-size: 14px;
 }
 
@@ -50,6 +52,10 @@ h1 {
 
 .invalid ~ .error-message {
     display: block;
+}
+
+li::marker {
+    content: "";
 }
 
 button {
@@ -100,13 +106,8 @@ button:active {
     background: #c82333;
 }
 
-.edit-form {
-    gap: 8px;
-    width: 100%;
-    align-items: center;
-}
-
 .edit-todo-item-text-field {
+    width: 55%;
     padding: 5px;
     border: 2px solid #007bff;
     border-radius: 4px;
@@ -115,6 +116,10 @@ button:active {
 
 .edit-todo-item-text-field.invalid {
     border-color: #dc3545;
+}
+
+.edit-todo-item-text-field.invalid::placeholder {
+    color: #dc3545;
 }
 
 .save-button {
