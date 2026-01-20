@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
         function setViewMode() {
             // Устанавливаем HTML структуру заметки в режиме просмотра
             newTodoItem.innerHTML = `<span class="text"></span>
-        <div class="button-group">
-            <button type="button" class="edit-button">Редактировать</button>
-            <button type="button" class="delete-button">Удалить</button>
-        </div>`;
+            <div class="button-group">
+                <button type="button" class="edit-button">Редактировать</button>
+                <button type="button" class="delete-button">Удалить</button>
+            </div>`;
 
             // Вставляем текст заметки
             newTodoItem.querySelector(".text").textContent = newTodoItemText;
@@ -49,12 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
             newTodoItem.querySelector(".edit-button").addEventListener("click", function () {
                 // Переключаемся в режим редактирования
                 newTodoItem.innerHTML = `
-            <form class="edit-form">
-                <input type="text" class="edit-todo-item-text-field">
-                <button type="submit">Сохранить</button>
-                <button type="button" class="cancel-button">Отмена</button>
-            </form>   
-            `;
+                <form class="edit-form">
+                    <input type="text" class="edit-todo-item-text-field">
+                    
+                    <div class="button-group">
+                    <button type="submit" class="save-button">Сохранить</button>
+                    <button type="button" class="cancel-button">Отмена</button>
+                    </div>
+                    <div class="error-message">Нельзя сохранять пустое поле!</div>
+                </form>   
+                `;
 
                 // Получаем поле ввода для редактирования
                 const editToDoItemTextField = newTodoItem.querySelector(".edit-todo-item-text-field");
@@ -77,8 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     // Проверяем, не пустой ли текст
                     if (editTodoItemText.length === 0) {
                         editToDoItemTextField.classList.add("invalid");
-                        editToDoItemTextField.value = "";
-                        editToDoItemTextField.placeholder = "Нельзя сохранять пустое поле!";
                         return;
                     }
 
