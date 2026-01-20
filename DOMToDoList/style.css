@@ -9,10 +9,11 @@
     padding: 20px;
 }
 
-h1 {
+.container h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #333;
+    font-size: 25px;
 }
 
 .new-todo-item-label {
@@ -45,33 +46,48 @@ h1 {
 
 .error-message {
     color: #dc3545;
-    font-size: 12px;
-    margin-top: 3px;
+    font-size: 16px;
     display: none;
+    gap: 4px
 }
 
 .invalid ~ .error-message {
     display: block;
 }
 
-li::marker {
+.container li::marker {
     content: "";
 }
 
-button {
+.container li {
+    margin-top: 10px;
+}
+
+.button-group button,
+.new-todo-item-form button {
     padding: 10px 16px;
     border: none;
     border-radius: 6px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
+    margin-top: 5px;
+    justify-content: center;
 }
 
-button:hover {
+.button-group {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0; /* Не сжимать кнопки */
+}
+
+.button-group button:hover,
+.new-todo-item-form button:hover {
     transform: translateY(-1px);
 }
 
-button:active {
+.button-group button:active,
+.new-todo-item-form button:active {
     transform: translateY(0);
 }
 
@@ -106,9 +122,19 @@ button:active {
     background: #c82333;
 }
 
+.edit-form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    width: 100%;
+}
+
 .edit-todo-item-text-field {
-    width: 55%;
-    padding: 5px;
+    flex: 1;
+    min-width: 55%;
+    padding: 6px;
     border: 2px solid #007bff;
     border-radius: 4px;
     font-size: 14px;
@@ -116,10 +142,6 @@ button:active {
 
 .edit-todo-item-text-field.invalid {
     border-color: #dc3545;
-}
-
-.edit-todo-item-text-field.invalid::placeholder {
-    color: #dc3545;
 }
 
 .save-button {
