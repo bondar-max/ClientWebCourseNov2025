@@ -17,15 +17,12 @@ body {
 
 /* Стили для заголовков таблицы */
 .employees-table > thead > tr > th {
-    background-color: #3498db;
-    color: #fff;
-}
-
-.employees-table th {
     padding: 17px 10px 11px;
     text-align: left;
     font-weight: lighter;
     border: 1px solid #c6c6c6;
+    background-color: #3498db;
+    color: #fff;
 }
 
 /* Стили для строк таблицы (tr) */
