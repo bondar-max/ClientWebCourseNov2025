@@ -9,7 +9,7 @@ body {
 }
 
 .container {
-    background-color: white;
+    background-color: #fff;
     padding: 30px;
     border-radius: 10px;
     width: 300px;
@@ -35,7 +35,7 @@ body {
     width: 100%;
     padding: 10px;
     background-color: #4caf50;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
