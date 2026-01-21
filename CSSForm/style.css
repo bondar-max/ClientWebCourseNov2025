@@ -51,6 +51,7 @@ body {
     color: #555;
     margin-bottom: 8px;
     font-size: 14px;
+    width: max-content;
 }
 
 /* Поля ввода */
@@ -108,7 +109,6 @@ textarea.form-input {
     font-size: 14px;
     cursor: pointer;
     float: right;
-
 }
 
 .submit-button:hover {
