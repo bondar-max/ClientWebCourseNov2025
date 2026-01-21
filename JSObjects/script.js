@@ -49,23 +49,23 @@
         }
     ];
 
-// Функция для поиска стран с максимальным количеством городов
-    function getCountriesWithMaxCityCount(countriesList) {
-        if (countriesList.length === 0) {
+    // Функция для поиска стран с максимальным количеством городов
+    function getCountriesWithMaxCitiesCount(countries) {
+        if (countries.length === 0) {
             return [];
         }
 
-        const citiesCounts = countriesList.map(country => country.cities.length);
-        const maxCount = Math.max(...citiesCounts);
+        const citiesCounts = countries.map(country => country.cities.length);
+        const maxCitiesCount = Math.max(...citiesCounts);
 
-        return countriesList.filter(country => country.cities.length === maxCount);
+        return countries.filter(country => country.cities.length === maxCitiesCount);
     }
 
-// Функция для получения суммарного населения по странам
-    function getCountriesTotalPopulations(countriesList) {
+    // Функция для получения суммарного населения по странам
+    function getCountriesTotalPopulations(countries) {
         const result = {};
 
-        countriesList.forEach(country => {
+        countries.forEach(country => {
             result[country.name] = calculateCountryPopulation(country);
         });
 
@@ -73,12 +73,11 @@
     }
 
     function calculateCountryPopulation(country) {
-        return country.cities
-            .reduce((sum, city) => sum + city.population, 0);
+        return country.cities.reduce((sum, city) => sum + city.population, 0);
     }
 
     console.log("Страны с максимальным количеством городов:");
-    console.log(getCountriesWithMaxCityCount(countries));
+    console.log(getCountriesWithMaxCitiesCount(countries));
 
     console.log("\nОбщее население по странам:");
     console.log(getCountriesTotalPopulations(countries));
