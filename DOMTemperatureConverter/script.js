@@ -1,28 +1,38 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", function () {
-    const celsiusInputElement = document.getElementById('celsius-scale');
+    const celsiusInputElement = document.getElementById("celsius-scale");
 
-    const kelvinOutputElement = document.getElementById('kelvin-scale');
-    const fahrenheitOutputElement = document.getElementById('fahrenheit-scale');
+    const kelvinOutputElement = document.getElementById("kelvin-scale");
+    const fahrenheitOutputElement = document.getElementById("fahrenheit-scale");
 
     kelvinOutputElement.readOnly = true;
     fahrenheitOutputElement.readOnly = true;
 
-    const convertButton = document.querySelector('.convert-button');
+    const form = document.getElementById("temp-form");
 
-    convertButton.addEventListener("click", function () {
-        const celsiusValue = parseFloat(celsiusInputElement.value);
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-        if (isNaN(celsiusValue)) {
-            alert('Пожалуйста, введите корректное число!');
+        const celsiusTemperature = parseFloat(celsiusInputElement.value);
+
+        if (isNaN(celsiusTemperature)) {
+            alert("Пожалуйста, введите корректное число!");
             return;
         }
 
-        const kelvinValue = celsiusValue + 273.15;
-        const fahrenheitValue = (celsiusValue * 9/5) + 32;
+        function convertToKelvin(celsiusTemperature) {
+            return celsiusTemperature + 273.15;
+        }
 
-        kelvinOutputElement.value = kelvinValue;
-        fahrenheitOutputElement.value = fahrenheitValue;
+        function convertToFahrenheit(celsiusTemperature) {
+            return (celsiusTemperature * 9 / 5) + 32;
+        }
+
+        const kelvinTemperature = convertToKelvin(celsiusTemperature);
+        const fahrenheitTemperature = convertToFahrenheit(celsiusTemperature);
+
+        kelvinOutputElement.value = kelvinTemperature;
+        fahrenheitOutputElement.value = fahrenheitTemperature;
     });
 });
