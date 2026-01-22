@@ -9,15 +9,20 @@ document.addEventListener("DOMContentLoaded", function () {
     kelvinOutputElement.readOnly = true;
     fahrenheitOutputElement.readOnly = true;
 
-    const form = document.getElementById("temp-form");
+    const form = document.getElementById("temperature-form");
 
     form.addEventListener("submit", function (e) {
         e.preventDefault();
 
-        const celsiusTemperature = parseFloat(celsiusInputElement.value);
+        const inputValue = celsiusInputElement.value.trim();
+        const celsiusTemperature = parseFloat(inputValue);
 
-        if (isNaN(celsiusTemperature)) {
+        if (isNaN(celsiusTemperature) || /[a-zA-Zа-яА-ЯёЁ]/.test(inputValue)) {
             alert("Пожалуйста, введите корректное число!");
+            kelvinOutputElement.value = "";
+            fahrenheitOutputElement.value = "";
+            celsiusInputElement.value = "";
+            celsiusInputElement.focus();
             return;
         }
 
