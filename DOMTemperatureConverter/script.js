@@ -29,10 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return (celsiusTemperature * 9 / 5) + 32;
         }
 
-        const kelvinTemperature = convertToKelvin(celsiusTemperature);
-        const fahrenheitTemperature = convertToFahrenheit(celsiusTemperature);
-
-        kelvinOutputElement.value = kelvinTemperature;
-        fahrenheitOutputElement.value = fahrenheitTemperature;
+        kelvinOutputElement.value = convertToKelvin(celsiusTemperature);
+        fahrenheitOutputElement.value = convertToFahrenheit(celsiusTemperature);
     });
 });
