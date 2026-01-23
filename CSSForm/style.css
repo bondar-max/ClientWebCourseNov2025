@@ -26,21 +26,20 @@ body {
 /* Форма */
 .application-form {
     background-color: #ffead1;
-    padding: 13px 22px;
+    padding: 13px 22px 12px;
     border-radius: 0;
 }
 
-.application-form .form-group:first-of-type {
+.application-form > .form-group:first-of-type {
     margin-top: 4px;
-    margin-bottom: 18px;
 }
 
 /* Группа полей */
-.form-group {
+.form-group div {
     margin-bottom: 18px;
 }
 
-.application-form > .form-group:nth-last-of-type(2) {
+.application-form > .form-group div:last-child {
     margin-bottom: 16px;
 }
 
@@ -77,11 +76,6 @@ textarea.form-input {
     height: 112px;
     font-family: inherit;
     padding: 8px 10px;
-}
-
-/* Футер формы */
-.form-footer {
-    margin-top: 0;
 }
 
 /* Clearfix */
