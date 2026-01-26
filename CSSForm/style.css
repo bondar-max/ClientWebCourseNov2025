@@ -30,16 +30,16 @@ body {
     border-radius: 0;
 }
 
-.application-form > .form-group:first-of-type {
+.application-form > .form:first-of-type {
     margin-top: 4px;
 }
 
 /* Группа полей */
-.form-group div {
+.form .form-group {
     margin-bottom: 18px;
 }
 
-.application-form > .form-group div:last-child {
+.application-form > .form .form-group:last-child {
     margin-bottom: 16px;
 }
 
