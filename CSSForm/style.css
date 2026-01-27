@@ -30,7 +30,7 @@ body {
     border-radius: 0;
 }
 
-.application-form > .form:first-of-type {
+.application-form > .form{
     margin-top: 4px;
 }
 
@@ -39,7 +39,7 @@ body {
     margin-bottom: 18px;
 }
 
-.application-form > .form .form-group:last-child {
+.form .form-group:last-child {
     margin-bottom: 16px;
 }
 
