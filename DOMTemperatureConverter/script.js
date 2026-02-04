@@ -11,16 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const form = document.getElementById("temperature-form");
 
-    function convertTemperature() {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
         const inputValue = celsiusInputElement.value.trim();
         const celsiusTemperature = Number(inputValue);
 
-        // Проверка с использованием Number()
         if (isNaN(celsiusTemperature) || inputValue === "") {
             alert("Пожалуйста, введите корректное число!");
             kelvinOutputElement.value = "";
             fahrenheitOutputElement.value = "";
-            celsiusInputElement.value = "";
             celsiusInputElement.focus();
             return;
         }
@@ -35,16 +35,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
         kelvinOutputElement.value = convertToKelvin(celsiusTemperature);
         fahrenheitOutputElement.value = convertToFahrenheit(celsiusTemperature);
-    }
-
-    form.addEventListener("click", function (e) {
-        e.preventDefault();
-        convertTemperature();
-    });
-
-    celsiusInputElement.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-            convertTemperature();
-        }
     });
 });
