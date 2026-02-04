@@ -6,7 +6,6 @@
 
         fetch("https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json")
             .then(response => {
-
                 if (!response.ok) {
                     return new Error(`HTTP ошибка: ${response.status}`);
                 }
@@ -22,7 +21,7 @@
             });
     }
 
-// Объявляем асинхронную функцию для загрузки данных
+    // Объявляем асинхронную функцию для загрузки данных
     async function loadProductsListUsingAsyncAwait() {
         console.log("Загрузка #2 началась...");
 
