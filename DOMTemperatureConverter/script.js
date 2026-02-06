@@ -6,9 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const kelvinOutputElement = document.getElementById("kelvin-scale");
     const fahrenheitOutputElement = document.getElementById("fahrenheit-scale");
 
-    kelvinOutputElement.readOnly = true;
-    fahrenheitOutputElement.readOnly = true;
-
     const form = document.getElementById("temperature-form");
 
     form.addEventListener("submit", function (e) {
