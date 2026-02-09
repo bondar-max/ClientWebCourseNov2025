@@ -8,22 +8,24 @@
     <script defer src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script defer src="./script.js"></script>
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 <div class="container">
     <h1>Todo List</h1>
 
-    <form class="new-todo-item-form">
-        <label class="new-todo-item-label" for="new-todo-item-text-field">Введите заметку</label>
-        <div class="input-wrapper">
-            <input id="new-todo-item-text-field" class="new-text-field" type="text">
-            <div class="error-message">Необходимо заполнить поле</div>
+    <form class="new-todo-item-form row mb-3">
+        <div class="col">
+            <label for="new-todo-item-text-field" class="form-label visually-hidden">Новая заметка</label>
+            <input id="new-todo-item-text-field" class="new-text-field form-control" type="text" placeholder="Введите заметку">
+            <div class="invalid-feedback">Необходимо заполнить поле</div>
         </div>
-        <button type="submit" class="button-group">Добавить</button>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">Добавить</button>
+        </div>
+
     </form>
 
-    <ul id="todo-list"></ul>
+    <ul class="list-unstyled" id="todo-list"></ul>
 </div>
 </body>
 </html>
