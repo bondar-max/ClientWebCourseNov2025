@@ -3,80 +3,85 @@
 // Ожидаем полной загрузки DOM перед выполнением скрипта
 $(function () {
     // Получаем ссылки на основные элементы
-    const $todoList = $("#todo-list");
-    const $newTodoItemTextField = $("#new-todo-item-text-field");
-    const $newTodoForm = $(".new-todo-item-form");
+    const todoList = $("#todo-list");
+    const newTodoItemTextField = $("#new-todo-item-text-field");
+    const newTodoForm = $(".new-todo-item-form");
 
     // Добавляем обработчик события отправки формы
-    $newTodoForm.on("submit", function (e) {
+    newTodoForm.on("submit", function (e) {
         e.preventDefault(); // Предотвращаем стандартную отправку формы
 
         // Убираем класс ошибки при новой попытке добавления
-        $newTodoItemTextField.removeClass("invalid");
+        newTodoItemTextField.removeClass("is-invalid");
 
         // Получаем и очищаем текст заметки от пробелов
-        let newTodoItemText = String($newTodoItemTextField.val()).trim();
+        let newTodoItemText = String(newTodoItemTextField.val()).trim();
 
         // Проверяем, не пустой ли текст
         if (newTodoItemText.length === 0) {
-            $newTodoItemTextField.addClass("invalid"); // Показываем ошибку
+            newTodoItemTextField.addClass("is-invalid"); // Показываем ошибку
             return;
         }
 
         // Создаем новый элемент списка (заметку)
-        const $newTodoItem = $("<li>");
+        const newTodoItem = $("<li class='mb-2'>");
 
         // Функция для установки режима просмотра (обычный вид заметки)
         function setViewMode() {
             // Устанавливаем HTML структуру заметки в режиме просмотра
-            $newTodoItem.html(`<span class="text"></span>
-                <div class="button-group">
-                    <button type="button" class="edit-button">Редактировать</button>
-                    <button type="button" class="delete-button">Удалить</button>
+            newTodoItem.html(`<div class="row">
+                <div class="col text"></div>
+                <div class="col-auto">
+                    <button type="button" class="edit-button btn btn-primary">Редактировать</button>
+                    <button type="button" class="delete-button btn btn-danger">Удалить</button>
+                </div>
                 </div>`);
 
             // Вставляем текст заметки
-            $newTodoItem.find(".text").text(newTodoItemText);
+            newTodoItem.find(".text").text(newTodoItemText);
 
             // Добавляем обработчик для кнопки удаления
-            $newTodoItem.find(".delete-button").on("click", function () {
-                $newTodoItem.remove(); // Удаляем заметку
+            newTodoItem.find(".delete-button").on("click", function () {
+                newTodoItem.remove(); // Удаляем заметку
             });
 
             // Добавляем обработчик для кнопки редактирования
-            $newTodoItem.find(".edit-button").on("click", function () {
+            newTodoItem.find(".edit-button").on("click", function () {
                 // Переключаемся в режим редактирования
-                $newTodoItem.html(`
-                    <form class="edit-form">
-                        <input type="text" class="edit-todo-item-text-field">
-                        <div class="button-group">
-                            <button type="submit" class="save-button">Сохранить</button>
-                            <button type="button" class="cancel-button">Отмена</button>
+                newTodoItem.html(`
+                    <form class="edit-form row">
+                       <div class="col">
+                             <input type="text" class="edit-todo-item-text-field form-control">
+                             <div class="invalid-feedback">Нельзя сохранять пустое поле!</div>
                         </div>
-                        <div class="error-message">Нельзя сохранять пустое поле!</div>
+                        <div class="col-auto">
+                            <button type="submit" class="save-button btn btn-primary">Сохранить</button>
+                            <button type="button" class="cancel-button btn btn-secondary">Отмена</button>
+                        </div>
+      
                     </form>`);
 
                 // Получаем поле ввода для редактирования
-                const $editTodoItemTextField = $newTodoItem.find(".edit-todo-item-text-field");
+                const editTodoItemTextField = newTodoItem.find(".edit-todo-item-text-field");
 
                 // Устанавливаем текущий текст в поле редактирования
-                $editTodoItemTextField.val(newTodoItemText);
+                editTodoItemTextField.val(newTodoItemText);
 
                 // Обработчик для кнопки "Отмена"
-                $newTodoItem.find(".cancel-button").on("click", function () {
+                newTodoItem.find(".cancel-button").on("click", function () {
                     setViewMode(); // Возвращаемся в режим просмотра
                 });
 
                 // Обработчик отправки формы редактирования
-                $newTodoItem.find(".edit-form").on("submit", function (e) {
+                newTodoItem.find(".edit-form").on("submit", function (e) {
                     e.preventDefault();
 
                     // Получаем и очищаем отредактированный текст
-                    const editTodoItemText = $editTodoItemTextField.val().trim();
+                    const editTodoItemText = editTodoItemTextField.val().trim();
 
                     // Проверяем, не пустой ли текст
                     if (editTodoItemText.length === 0) {
-                        $editTodoItemTextField.addClass("invalid");
+                        editTodoItemTextField.addClass("is-invalid");
                         return;
                     }
 
@@ -93,9 +98,9 @@ $(function () {
         setViewMode();
 
         // Добавляем новую заметку в список
-        $todoList.append($newTodoItem);
+        todoList.append(newTodoItem);
 
         // Очищаем поле ввода после успешного добавления
-        $newTodoItemTextField.val("");
+        newTodoItemTextField.val("");
     });
 });
