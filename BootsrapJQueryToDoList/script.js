@@ -15,7 +15,8 @@ $(function () {
         newTodoItemTextField.removeClass("is-invalid");
 
         // Получаем и очищаем текст заметки от пробелов
-        let newTodoItemText = String(newTodoItemTextField.val()).trim();
+        // noinspection JSUnresolvedReference
+        let newTodoItemText = newTodoItemTextField.val().trim();
 
         // Проверяем, не пустой ли текст
         if (newTodoItemText.length === 0) {
