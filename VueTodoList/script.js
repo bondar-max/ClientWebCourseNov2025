@@ -5,7 +5,7 @@ const app = Vue.createApp({});
 // Компонент отдельной задачи
 app.component("TodoItem", {
     props: {
-        items: {
+        item: {
             type: Object,
             required: true
         }
@@ -14,7 +14,7 @@ app.component("TodoItem", {
     data() {
         return {
             isEditing: false,
-            editText: this.items.text,
+            editText: this.item.text,
             showError: false
         };
     },
@@ -23,7 +23,7 @@ app.component("TodoItem", {
       <li class="mb-2">
         <!-- Режим просмотра -->
         <div v-if="!isEditing" class="row">
-          <div class="col text">{{ items["text"] }}</div>
+          <div class="col text">{{ item["text"] }}</div>
           <div class="col-auto">
             <button type="button" class="btn btn-primary me-2" @click="startEditing">Редактировать</button>
             <button type="button" class="btn btn-danger" @click="deleteItem">Удалить</button>
@@ -53,7 +53,7 @@ app.component("TodoItem", {
     methods: {
         startEditing() {
             this.isEditing = true;
-            this.editText = this.items.text;
+            this.editText = this.item.text;
             this.showError = false;
         },
 
@@ -66,7 +66,7 @@ app.component("TodoItem", {
             }
 
             this.$emit("update-todo-item", {
-                id: this.items.id,
+                id: this.item.id,
                 text: trimmedText
             });
 
@@ -76,12 +76,12 @@ app.component("TodoItem", {
 
         cancelEditing() {
             this.isEditing = false;
-            this.editText = this.items.text;
+            this.editText = this.item.text;
             this.showError = false;
         },
 
         deleteItem() {
-            this.$emit("delete-todo-item", this.items.id);
+            this.$emit("delete-todo-item", this.item.id);
         }
     }
 });
