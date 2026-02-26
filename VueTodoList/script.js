@@ -5,7 +5,7 @@ const app = Vue.createApp({});
 // Компонент отдельной задачи
 app.component("TodoItem", {
     props: {
-        item: {
+        listItem: {
             type: Object,
             required: true
         }
@@ -14,8 +14,8 @@ app.component("TodoItem", {
     data() {
         return {
             isEditing: false,
-            editText: this.item.text,
-            showError: false
+            editText: this.listItem.text,
+            isError: false
         };
     },
 
@@ -23,7 +23,7 @@ app.component("TodoItem", {
       <li class="mb-2">
         <!-- Режим просмотра -->
         <div v-if="!isEditing" class="row">
-          <div class="col text">{{ item["text"] }}</div>
+          <div class="col text">{{ listItem["text"] }}</div>
           <div class="col-auto">
             <button type="button" class="btn btn-primary me-2" @click="startEditing">Редактировать</button>
             <button type="button" class="btn btn-danger" @click="deleteItem">Удалить</button>
@@ -36,14 +36,14 @@ app.component("TodoItem", {
             <input
                 type="text"
                 class="form-control"
-                :class="{ 'is-invalid': showError }"
+                :class="{ 'is-invalid': isError }"
                 v-model="editText"
                 @keyup.esc="cancelEditing"
             >
             <div class="invalid-feedback">Нельзя сохранять пустое поле!</div>
           </div>
           <div class="col-auto">
-            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <button type="submit" class="btn btn-primary me-2">Сохранить</button>
             <button type="button" class="btn btn-secondary" @click="cancelEditing">Отмена</button>
           </div>
         </form>
@@ -53,35 +53,35 @@ app.component("TodoItem", {
     methods: {
         startEditing() {
             this.isEditing = true;
-            this.editText = this.item.text;
-            this.showError = false;
+            this.editText = this.listItem.text;
+            this.isError = false;
         },
 
         saveEditing() {
             const trimmedText = this.editText.trim();
 
             if (trimmedText.length === 0) {
-                this.showError = true;
+                this.isError = true;
                 return;
             }
 
             this.$emit("update-todo-item", {
-                id: this.item.id,
+                id: this.listItem.id,
                 text: trimmedText
             });
 
             this.isEditing = false;
-            this.showError = false;
+            this.isError = false;
         },
 
         cancelEditing() {
             this.isEditing = false;
-            this.editText = this.item.text;
-            this.showError = false;
+            this.editText = this.listItem.text;
+            this.isError = false;
         },
 
         deleteItem() {
-            this.$emit("delete-todo-item", this.item.id);
+            this.$emit("delete-todo-item", this.listItem.id);
         }
     }
 });
@@ -92,7 +92,7 @@ app.component("TodoList", {
         return {
             items: [],
             newTodoItemText: "",
-            showError: false,
+            isError: false,
             nextId: 1
         };
     },
@@ -109,7 +109,7 @@ app.component("TodoList", {
                 id="new-todo-item-text"
                 type="text"
                 class="form-control"
-                :class="{ 'is-invalid': showError }"
+                :class="{ 'is-invalid': isError }"
                 v-model="newTodoItemText"
                 placeholder="Введите заметку">
             <div class="invalid-feedback">Необходимо заполнить поле</div>
@@ -124,7 +124,7 @@ app.component("TodoList", {
           <todo-item
               v-for="item in items"
               :key="item.id"
-              :item="item"
+              :listItem="item"
               @delete-todo-item="deleteItem"
               @update-todo-item="updateItem"/>
         </ul>
@@ -144,7 +144,7 @@ app.component("TodoList", {
             const trimmedText = this.newTodoItemText.trim();
 
             if (trimmedText.length === 0) {
-                this.showError = true;
+                this.isError = true;
                 return;
             }
 
@@ -154,15 +154,15 @@ app.component("TodoList", {
             });
 
             this.newTodoItemText = "";
-            this.showError = false;
+            this.isError = false;
         },
 
         deleteItem(itemId) {
-            this.items = this.items.filter(todo => todo.id !== itemId);
+            this.items = this.items.filter(item => item.id !== itemId);
         },
 
         updateItem(updatedItem) {
-            const index = this.items.findIndex(todo => todo.id === updatedItem.id);
+            const index = this.items.findIndex(item => item.id === updatedItem.id);
             if (index !== -1) {
                 this.items[index].text = updatedItem.text;
             }
