@@ -17,6 +17,7 @@
 
     <div class="row">
         <form @submit.prevent="addContact" class="mb-3 col-lg-6">
+            <h5 class="mb-3">Создание контакта</h5>
             <div class="mb-3">
                 <label for="name" class="form-label"> Имя</label>
                 <input v-model.trim="name" :class="{'is-invalid': isNameInvalid}" type="text" class="form-control" id="name">
@@ -29,6 +30,19 @@
             </div>
             <button type="submit" class="btn btn-primary">Создать</button>
         </form>
+    </div>
+
+    <!--Поле поиска-->
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Поиск контактов..."
+                    v-model="term"
+                    @input="loadContacts"
+            >
+        </div>
     </div>
 
     <div class="table-responsive">
@@ -47,13 +61,56 @@
                 <td>{{contact.name}}</td>
                 <td>{{contact.phone}}</td>
                 <td>
-                   <button @click="showDeleteContactConfirmModal(contact.id)" class="btn btn-danger">Удалить</button>
+                    <button @click="editContact(contact.id)" class="btn btn-primary btn-sm me-2">Редактировать</button>
+                    <button @click="showDeleteContactConfirmModal(contact.id)" class="btn btn-danger btn-sm">Удалить</button>
                 </td>
+            </tr>
+
+            <!--Сообщение когда нет контактов-->
+            <tr v-if="contacts.length === 0">
+                <td colspan="4" class="text-center">Нет контактов</td>
             </tr>
             </tbody>
         </table>
     </div>
 
+    <!--Редактирование контакта-->
+    <modal ref="editContactModal" @ok="updateContact" @cancel="resetEditForm" @hidden="resetEditForm">
+        <template v-slot:title>
+            Редактирование контакта
+        </template>
+
+        <form @submit.prevent="updateContact">
+            <div class="mb-3">
+                <label for="editName" class="form-label">Имя</label>
+                <input
+                        v-model.trim="editName"
+                        :class="{'is-invalid': isEditNameInvalid}"
+                        type="text"
+                        class="form-control"
+                        id="editName"
+                >
+                <div class="invalid-feedback">Необходимо заполнить поле</div>
+            </div>
+            <div class="mb-3">
+                <label for="editPhone" class="form-label">Телефон</label>
+                <input
+                        v-model.trim="editPhone"
+                        :class="{'is-invalid': !!editPhoneErrorMessage}"
+                        type="text"
+                        class="form-control"
+                        id="editPhone"
+                >
+                <div class="invalid-feedback" v-text="editPhoneErrorMessage"></div>
+            </div>
+        </form>
+
+        <template v-slot:ok-button>
+            Сохранить изменения
+        </template>
+    </modal>
+
+    <!--Подтверждение удаления-->
     <modal @ok="deleteContact" ref="deleteContactConfirmModal">
         <template v-slot:title>
             Подтвердите удаление
