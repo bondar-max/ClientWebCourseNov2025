@@ -157,7 +157,7 @@ router.put("/api/contacts/:id", function (req, res) {
         return;
     }
 
-    const name = (req.body.name || "").trim();
+    let name = (req.body.name || "").trim();
 
     if (name.length === 0) {
         res.send({
