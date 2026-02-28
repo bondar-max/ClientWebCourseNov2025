@@ -30,12 +30,13 @@ $(function () {
         // Функция для установки режима просмотра (обычный вид заметки)
         function setViewMode() {
             // Устанавливаем HTML структуру заметки в режиме просмотра
-            newTodoItem.html(`<div class="row">
-                <div class="col text"></div>
-                <div class="col-auto">
-                    <button type="button" class="edit-button btn btn-primary">Редактировать</button>
-                    <button type="button" class="delete-button btn btn-danger">Удалить</button>
-                </div>
+            newTodoItem.html(`
+                <div class="row">
+                    <div class="col text"></div>
+                    <div class="col-auto">
+                        <button type="button" class="edit-button btn btn-primary">Редактировать</button>
+                        <button type="button" class="delete-button btn btn-danger">Удалить</button>
+                     </div>
                 </div>`);
 
             // Вставляем текст заметки
@@ -59,7 +60,6 @@ $(function () {
                             <button type="submit" class="save-button btn btn-primary">Сохранить</button>
                             <button type="button" class="cancel-button btn btn-secondary">Отмена</button>
                         </div>
-      
                     </form>`);
 
                 // Получаем поле ввода для редактирования
