@@ -33,13 +33,7 @@ app.component("TodoItem", {
         <!-- Режим редактирования -->
         <form v-else class="row" @submit.prevent="saveEditing">
           <div class="col">
-            <input
-                type="text"
-                class="form-control"
-                :class="{ 'is-invalid': isError }"
-                v-model="editText"
-                @keyup.esc="cancelEditing"
-            >
+            <input type="text" class="form-control" :class="{ 'is-invalid': isError }" v-model="editText" @keyup.esc="cancelEditing">
             <div class="invalid-feedback">Нельзя сохранять пустое поле!</div>
           </div>
           <div class="col-auto">
