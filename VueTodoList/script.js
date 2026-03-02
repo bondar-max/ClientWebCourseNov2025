@@ -11,6 +11,8 @@ app.component("TodoItem", {
         }
     },
 
+    emits: ["delete-todo-item", "update-todo-item"],
+
     data() {
         return {
             isEditing: false,
@@ -19,11 +21,17 @@ app.component("TodoItem", {
         };
     },
 
+    computed: {
+        itemText() {
+            return this.listItem.text;
+        }
+    },
+
     template: `
       <li class="mb-2">
         <!-- Режим просмотра -->
         <div v-if="!isEditing" class="row">
-          <div class="col text">{{ listItem["text"] }}</div>
+          <div class="col text">{{ itemText }}</div>
           <div class="col-auto">
             <button type="button" class="btn btn-primary me-2" @click="startEditing">Редактировать</button>
             <button type="button" class="btn btn-danger" @click="deleteItem">Удалить</button>
@@ -92,7 +100,7 @@ app.component("TodoList", {
     },
 
     template: `
-      <div class="container">
+      <div class="container pt-2">
         <h1>Todo List на Vue.js</h1>
 
         <!-- Форма добавления -->
@@ -142,8 +150,10 @@ app.component("TodoList", {
                 return;
             }
 
+            this.nextId++;
+
             this.items.push({
-                id: this.nextId++,
+                id: this.nextId,
                 text: trimmedText
             });
 
@@ -156,10 +166,9 @@ app.component("TodoList", {
         },
 
         updateItem(updatedItem) {
-            const index = this.items.findIndex(item => item.id === updatedItem.id);
-            if (index !== -1) {
-                this.items[index].text = updatedItem.text;
-            }
+            this.items = this.items.map(item =>
+                item.id === updatedItem.id ? updatedItem : item
+            );
         }
     }
 });
