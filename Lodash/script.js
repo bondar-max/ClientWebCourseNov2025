@@ -1,7 +1,7 @@
 "use strict";
 
 (function () {
-// Исходные данные
+    // Исходные данные
     const people = [
         { name: "Иван", age: 25 },
         { name: "Петр", age: 30 },
@@ -15,19 +15,19 @@
         { name: "Мария", age: 31 }
     ];
 
-// 1. Посчитать средний возраст всех людей
+    // 1. Посчитать средний возраст всех людей
     const averageAge = _.meanBy(people, "age");
     console.log("Средний возраст:", averageAge); // 27.2
 
-// 2. Получить список людей с возрастом от 20 до 30 включительно, отсортировать их по возрастанию возраста
-    const filteredAndSortedList = _.chain(people)
+    // 2. Получить список людей с возрастом от 20 до 30 включительно, отсортировать их по возрастанию возраста
+    const filteredAndSortedPeopleList = _.chain(people)
         .filter(p => p.age >= 20 && p.age <= 30)
         .sortBy("age")
         .value();
     console.log("Люди от 20 до 30 лет:");
-    console.table(filteredAndSortedList);
+    console.table(filteredAndSortedPeopleList);
 
-// 3. Получить список уникальных имен людей с возрастом от 20 до 30 включительно, отсортировать его по убыванию
+    // 3. Получить список уникальных имен людей с возрастом от 20 до 30 включительно, отсортировать его по убыванию
     const uniqueNames = _.chain(people)
         .filter(p => p.age >= 20 && p.age <= 30)
         .map("name")
@@ -37,7 +37,7 @@
         .value();
     console.log("Уникальные имена (по убыванию):", uniqueNames);
 
-// 4. Получить объект, в котором ключами будут имена людей, а значениями – количество людей с этим именем
+    // 4. Получить объект, в котором ключами будут имена людей, а значениями – количество людей с этим именем
     const namesCounts = _.countBy(people, "name");
     console.log("Количество людей по именам:");
     console.log(namesCounts);
