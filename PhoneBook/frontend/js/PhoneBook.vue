@@ -19,7 +19,7 @@ export default {
       contactIdToDelete: null,
       editName: "",
       editPhone: "",
-      isEditNameInvalid: false,
+      isEditingNameInvalid: false,
       editPhoneErrorMessage: null
     };
   },
@@ -44,7 +44,7 @@ export default {
     resetEditForm() {
       this.editName = "";
       this.editPhone = "";
-      this.isEditNameInvalid = false;
+      this.isEditingNameInvalid = false;
       this.editPhoneErrorMessage = null;
       this.contactIdToEdit = null;
     },
@@ -61,7 +61,7 @@ export default {
             this.contactIdToEdit = id;
             this.editName = response.contact.name;
             this.editPhone = response.contact.phone;
-            this.isEditNameInvalid = false;
+            this.isEditingNameInvalid = false;
             this.editPhoneErrorMessage = null;
 
             // Показать модальное окно редактирования
@@ -114,7 +114,7 @@ export default {
 
     //Обновление контакта
     updateContact() {
-      this.isEditNameInvalid = false;
+      this.isEditingNameInvalid = false;
       this.editPhoneErrorMessage = null;
 
       let hasErrors = false;
@@ -125,7 +125,7 @@ export default {
       };
 
       if (contact.name.length === 0) {
-        this.isEditNameInvalid = true;
+        this.isEditingNameInvalid = true;
         hasErrors = true;
       }
 
@@ -252,7 +252,7 @@ export default {
       <form @submit.prevent="updateContact">
         <div class="mb-3">
           <label for="editName" class="form-label">Имя</label>
-          <input v-model.trim="editName" :class="{'is-invalid': isEditNameInvalid}" type="text"
+          <input v-model.trim="editName" :class="{'is-invalid': isEditingNameInvalid}" type="text"
                  class="form-control" id="editName">
           <div class="invalid-feedback">Необходимо заполнить поле</div>
         </div>
