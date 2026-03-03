@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PhoneBook</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="node_modules/vue/dist/vue.global.js"></script>
+    <script defer src="node_modules/axios/dist/axios.js"></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+<div id="app" class="container" v-cloak>
+    <h1 class="my-3">PhoneBook</h1>
+
+    <div class="row">
+        <form @submit.prevent="addContact" class="mb-3 col-lg-6">
+            <div class="mb-3">
+                <label for="name" class="form-label"> Имя</label>
+                <input v-model.trim="name" :class="{'is-invalid': isNameInvalid}" type="text" class="form-control" id="name">
+                <div class="invalid-feedback">Необходимо заполнить поле</div>
+            </div>
+            <div class="mb-3">
+                <label for="phone" class="form-label">Телефон</label>
+                <input v-model.trim="phone" :class="{'is-invalid': !!phoneErrorMessage}" type="text" class="form-control" id="phone">
+                <div class="invalid-feedback" v-text="phoneErrorMessage"></div>
+            </div>
+            <button type="submit" class="btn btn-primary">Создать</button>
+        </form>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Имя</th>
+                <th>Телефон</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(contact, index) in contacts" :key="contact.id">
+                <td>{{index + 1}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.phone}}</td>
+                <td>
+                    <button @click="showDeleteContactConfirmModal(contact.id)" class="btn btn-danger">Удалить</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <modal @ok="deleteContact" ref="deleteContactConfirmModal">
+        <template v-slot:title>
+            Подтвердите удаление
+        </template>
+        <p>Вы действительно хотите удалить выбранный контакт?</p>
+    </modal>
+
+</div>
+</body>
+</html>
