@@ -36,7 +36,7 @@ $(function () {
                     <div class="col-auto">
                         <button type="button" class="edit-button btn btn-primary">Редактировать</button>
                         <button type="button" class="delete-button btn btn-danger">Удалить</button>
-                     </div>
+                    </div>
                 </div>`);
 
             // Вставляем текст заметки
@@ -55,11 +55,11 @@ $(function () {
                        <div class="col">
                              <input type="text" class="edit-todo-item-text-field form-control">
                              <div class="invalid-feedback">Нельзя сохранять пустое поле!</div>
-                        </div>
-                        <div class="col-auto">
+                       </div>
+                       <div class="col-auto">
                             <button type="submit" class="save-button btn btn-primary">Сохранить</button>
                             <button type="button" class="cancel-button btn btn-secondary">Отмена</button>
-                        </div>
+                       </div>
                     </form>`);
 
                 // Получаем поле ввода для редактирования
