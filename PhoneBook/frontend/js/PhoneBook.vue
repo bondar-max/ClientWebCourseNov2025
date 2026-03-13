@@ -20,7 +20,8 @@ export default {
       editName: "",
       editPhone: "",
       isEditingNameInvalid: false,
-      editPhoneErrorMessage: null
+      editPhoneErrorMessage: null,
+      searchTimeout: null
     };
   },
 
@@ -29,6 +30,17 @@ export default {
       this.service.loadContacts(this.term)
           .then(contacts => this.contacts = contacts)
           .catch(() => alert("Ошибка при загрузке контактов"));
+    },
+
+    // Обработчик ввода с debounce
+    handleSearchInput() {
+      if (this.searchTimeout) {
+        clearTimeout(this.searchTimeout);
+      }
+
+      this.searchTimeout = setTimeout(() => {
+        this.loadContacts();
+      }, 1000);
     },
 
     //Сброс формы
@@ -208,12 +220,12 @@ export default {
     <!--Поле поиска-->
     <div class="row mb-3">
       <div class="col-lg-6">
-        <input type="text" class="form-control" v-model="term" @input="loadContacts"
+        <input type="text" class="form-control" v-model="term" @input="handleSearchInput"
                placeholder="Поиск контактов...">
       </div>
     </div>
 
-    <div class="table-responsive col-lg-6">
+    <div class="table-responsive col-12">
       <table class="table table-striped">
         <thead>
         <tr>
