@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default class PhoneBookService {
     constructor() {
-        this.baseUrl = "/api/contacts"
+        this.baseUrl = "/api/contacts";
     }
 
     loadContacts(term) {
@@ -10,7 +10,7 @@ export default class PhoneBookService {
             .then(response => response.data);
     }
 
-    //Получение контакта по ID
+    // Получение контакта по ID
     getContact(id) {
         return axios.get(`${this.baseUrl}/${id}`)
             .then(response => response.data);
@@ -24,10 +24,9 @@ export default class PhoneBookService {
     addContact(contact) {
         return axios.post(this.baseUrl, contact)
             .then(response => response.data);
-
     }
 
-    //Обновление контакта
+    // Обновление контакта
     updateContact(id, contact) {
         return axios.put(`${this.baseUrl}/${id}`, contact)
             .then(response => response.data);
