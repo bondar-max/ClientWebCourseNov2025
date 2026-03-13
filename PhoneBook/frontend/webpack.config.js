@@ -2,13 +2,12 @@ const path = require("path");
 
 const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {VueLoaderPlugin} = require("vue-loader");
 const webpack = require("webpack");
 
 module.exports = {
-    entry: "./js/script.js",// путь к стартовому модулю
-// на выходе создадим файл script.js в папке dist
+    entry: "./js/script.js", // путь к стартовому модулю на выходе создадим файл script.js в папке dist
     output: {
         filename: "script.js",
         path: path.resolve(__dirname, "..", "public"),
